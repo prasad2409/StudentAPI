@@ -25,4 +25,14 @@ public class StudentController {
         db.remove(admNo);
         return "Student Deleted";
     }
+
+    @PutMapping("/update")
+    Student updateStudent(@RequestParam("id") int admNo,Student student){
+        update(student);
+        return db.get(admNo);
+    }
+    void update(@RequestBody Student student){
+        db.put(student.getAdmNo(),student);
+        System.out.println("Student Data is Updated");
+    }
 }
